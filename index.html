@@ -1,0 +1,35 @@
+
+<input type="range" min="1" max="20" value="5" class="slider" id="myRange">
+<p>Scrambles: <span id="demo2"></span></p>
+<button onclick="myFunction()">Generate Scrambles</button>
+<p id="demo"></p>
+
+<script>
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+function myFunction() {
+    var scrambleLength = [8, 10, 12];
+    var Lphysmoves = ["Ly", "Ly'", "Ly2", "Lx2", "Lz2", "Lx2,y", "Lx2,y'", "Lx", "Lx,y", "Lx,y'", "Lx,y2", "Lx'", "Lx',y", "Lx',y'", "Lx',y2", "Lz", "Lz,y", "Lz,y'", "Lz,y2", "Lz'", "Lz',y", "Lz',y'", "Lz',y2", ""];
+    var Rphysmoves = ["Ry", "Ry'", "Ry2", "Rx2", "Rz2", "Rx2,y", "Rx2,y'", "Rx", "Rx,y", "Rx,y'", "Rx,y2", "Rx'", "Rx',y", "Rx',y'", "Rx',y2", "Rz", "Rz,y", "Rz,y'", "Rz,y2", "Rz'", "Rz',y", "Rz',y'", "Rz',y2", ""];
+    var message_text = "";
+    for (var j = 0; j < document.getElementById("myRange").value; ++j) 
+    {
+        var tempmsg =  "<br>" + (j+1) + ". ";
+        var scrambleLen = scrambleLength[getRandomInt(3)];
+        //std::cout << "new scramble" << std::endl;
+        for (var i = 0; i < scrambleLen; ++i) {
+            var Lrand = getRandomInt(24);
+            rand = Lphysmoves[Lrand];
+            var Rrand = getRandomInt(24);
+            rand2 = Rphysmoves[Rrand];
+            tempmsg += rand + " " + rand2 + " # ";
+        }
+        message_text += tempmsg;
+    }
+    document.getElementById("demo").innerHTML = message_text;
+}
+document.getElementById("myRange").oninput = function() {
+    document.getElementById("demo2").innerHTML = this.value;
+}
+</script>
