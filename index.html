@@ -15,6 +15,9 @@ var colors = ["orange","red","blue","green","purple","pink","yellow","white","gr
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
 function triangle(x,y,height,width,color)
 {
     ctx.beginPath();
@@ -260,6 +263,12 @@ function myFunction() {
 }
 document.getElementById("myRange").oninput = function() {
     document.getElementById("demo2").innerHTML = this.value;
+}
+if(urlParams.has('scrambles'))
+{
+    document.getElementById("myRange").value = urlParams.get('scrambles');
+    document.getElementById("demo2").innerHTML = urlParams.get('scrambles');
+    myFunction();
 }
 
 </script>
