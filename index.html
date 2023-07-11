@@ -6,7 +6,8 @@
 <p>Scrambles: <span id="demo2">5</span></p>
 <button onclick="myFunction()">Generate Scrambles</button>
 <p id="demo"></p>
-<canvas id="myCanvas" width="350" height="125" style="border:1px solid #000000;">
+<img id="imgShow" src="#">
+<canvas id="myCanvas" hidden="hidden" width="350" height="125" style="border:1px solid #000000;">
 </canvas>
 
 <script>
@@ -260,6 +261,8 @@ function myFunction() {
         cube(0,150 * j,puzzleState);
     }
     document.getElementById("demo").innerHTML = message_text;
+    var imagedata = canvas.toDataURL("image/png");
+    document.getElementById("imgShow").src = imagedata;
 }
 document.getElementById("myRange").oninput = function() {
     document.getElementById("demo2").innerHTML = this.value;
