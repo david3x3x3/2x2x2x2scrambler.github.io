@@ -5,7 +5,9 @@
 <input type="range" min="1" max="20" value="5" class="slider" id="myRange">
 <p>Scrambles: <span id="demo2">5</span></p>
 <button onclick="myFunction()">Generate Scrambles</button>
-<p id="demo"></p>
+<div style="max-width:350px;">
+  <p id="demo"></p>
+</div>
 <img id="imgShow" src="#">
 <canvas id="myCanvas" hidden="hidden" width="350" height="125" style="border:1px solid #000000;">
 </canvas>
@@ -245,7 +247,11 @@ function myFunction() {
     for (var j = 0; j < document.getElementById("myRange").value; ++j) 
     {
         var puzzleState = [[[0,7,2,5],[0,7,2,4],[0,7,3,4],[0,7,3,5],[0,6,2,5],[0,6,2,4],[0,6,3,4],[0,6,3,5]],[[1,7,2,4],[1,7,2,5],[1,7,3,5],[1,7,3,4],[1,6,2,4],[1,6,2,5],[1,6,3,5],[1,6,3,4]]];
-        var tempmsg =  "<br>" + (j+1) + ". ";
+        var tempmsg =  "";
+	if (j > 0) {
+	    tempmsg += "<br><br>";
+	}
+	tempmsg += (j+1) + ". ";
         var scrambleLen = scrambleLength[getRandomInt(3)];
         for (var i = 0; i < scrambleLen; ++i) {
             var Lrand = getRandomInt(24);
